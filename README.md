@@ -1,38 +1,6 @@
 
-# TesteCaixaBranca - Sistema de Login
+# Sistema de Autenticação de Usuários
 
-## **Problemas Identificados**
+Este repositório contém um sistema básico de autenticação de usuários desenvolvido em Java, utilizando JDBC para conexão com um banco de dados MySQL.
 
-### **1. Erro no Driver JDBC**
-- **Descrição**: O código utiliza a classe `com.mysql.DriverManager` como driver JDBC, o que está incorreto.
-- **Impacto**: Impede a conexão com o banco de dados, tornando o sistema inutilizável.
-
----
-
-### **2. Vulnerabilidade de SQL Injection**
-- **Descrição**: As variáveis `login` e `senha` são conectadas diretamente na query SQL, deixando o sistema vulnerável a ataques de SQL Injection.
-- **Impacto**: Possibilidade de invasões ao banco de dados, comprometendo a segurança do sistema.
-
----
-
-### **3. Conexão Não Fechada**
-- **Descrição**: A conexão com o banco de dados (`Connection`) não é fechada após o uso, causando vazamento de recursos.
-- **Impacto**: Péssimo desempenho e possibilidade de falhas no sistema devido ao esgotamento de conexões.
-
----
-
-### **4. Manipulação de Exceções**
-- **Descrição**: O código ignora exceções ao capturá-las.
-- **Impacto**: Dificuldade para diagnosticar erros e manter o sistema.
-
----
-
-### **5. Nomes de Variáveis Confusos**
-- **Descrição**: As variáveis globais `result` e `nome` possuem nomes genéricos, dificultando o entendimento do código.
-- **Impacto**: Reduz a legibilidade e aumenta a chance de erros por confusão.
-
----
-
-### **6. Possível NullPointerException**
-- **Descrição**: Caso a conexão ao banco de dados falhe, a variável `conn` será nula. O código não verifica essa possibilidade antes de utilizá-la.
-- **Impacto**: Erros inesperados durante a execução do sistema.
+O sistema valida login e senha dos usuários com base nos registros da tabela `usuarios` do banco de dados. Caso as credenciais sejam corretas, o sistema retorna o nome do usuário. Em caso de erros, mensagens são exibidas no console.
